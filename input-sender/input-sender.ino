@@ -87,6 +87,7 @@ String makeRequest(String ringingTheBell)
 
 void initSerial() {
   Serial.begin(115200);
+  while (!Serial);
 }
 
 void initWiFi() {
