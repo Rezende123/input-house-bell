@@ -10,7 +10,7 @@ const char* PASSWORD = "eueueu"; // senha da rede wifi
 
 String BASE_URL = "http://192.168.15.3:3000/";
 
-const int buttonPin = 2; // Pino digital do botão
+const int buttonPin = 16; // Pino digital do botão
 
 // ############# PROTOTYPES ############### //
 
@@ -28,22 +28,24 @@ HTTPClient http;
 void setup() {
   initSerial();
   initWiFi();
+  pinMode(buttonPin, INPUT);
 }
 
 void loop() {
   int buttomState = digitalRead(buttonPin);
-  Serial.println("##[BUTTOM]## ==> " + buttomState);
+  Serial.print("##[BUTTOM]## ");
+  Serial.println(buttomState);
 
-  if (buttomState == 1) {
-    httpRequest(BASE_URL, "true"); 
+  if (buttomState == HIGH) {
+    httpRequest("true"); 
   }  
 }
 
 // ############# HTTP REQUEST ################ //
 
-void httpRequest(String path, String ringingTheBell)
+void httpRequest(String ringingTheBell)
 {
-  String payload = makeRequest(path, ringingTheBell);
+  String payload = makeRequest(ringingTheBell);
 
   if (!payload) {
     return;
