@@ -55,9 +55,9 @@ void httpRequest(String ringingTheBell)
 
 }
 
-String makeRequest(String path, String ringingTheBell)
+String makeRequest(String ringingTheBell)
 {
-  http.begin(BASE_URL + path);
+  http.begin(BASE_URL);
   http.addHeader("content-type", "application/x-www-form-urlencoded");
 
   String body = "ringingTheBell=" + ringingTheBell;
@@ -65,7 +65,8 @@ String makeRequest(String path, String ringingTheBell)
   int httpCode = http.POST(body);
 
   if (httpCode < 0) {
-    Serial.println("request error - " + httpCode);
+    Serial.print("request error - ");
+    Serial.println(httpCode);
     return "";
 
   }
