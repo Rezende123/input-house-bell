@@ -6,9 +6,9 @@
 // ############# VARIABLES ############### //
 
 const char* SSID = "eu"; // rede wifi
-const char* PASSWORD = "eueueu"; // senha da rede wifi
+const char* PASSWORD = "eueueueu"; // senha da rede wifi
 
-String BASE_URL = "http://192.168.15.3:3000/";
+String BASE_URL = "http://192.168.43.235:3000/ring-the-bell";
 
 const int buttonPin = 16; // Pino digital do botão
 
